@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-    [SerializeField] private Transform pfWoodHarvester;
     private Camera mainCamera;
+    private BuildingTypeListSO buildingTypeList;
+    private BuildingTypeSO buildingType;
 
     // Start is called before the first frame update
     private void Start()
     {
         mainCamera = Camera.main;
+
+        buildingTypeList = Resources.Load<BuildingTypeListSO>(typeof(BuildingTypeListSO).Name);
+        buildingType = buildingTypeList.list[0];
     }
 
     // Update is called once per frame
@@ -18,7 +22,7 @@ public class BuildingManager : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Instantiate(pfWoodHarvester, GetMouseWorldPosition(), Quaternion.identity);
+            Instantiate(buildingType.prefab, GetMouseWorldPosition(), Quaternion.identity);
         }
     }
 
