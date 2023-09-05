@@ -25,6 +25,14 @@ public class BuildingManager : MonoBehaviour
         {
             Instantiate(buildingType.prefab, GetMouseWorldPosition(), Quaternion.identity);
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            buildingType = buildingTypeList.list[0];
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            buildingType = buildingTypeList.list[1];
+        }
     }
 
     private Vector3 GetMouseWorldPosition()
