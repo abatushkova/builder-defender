@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 61879565865595645}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-7587766602284080956
 MonoBehaviour:
