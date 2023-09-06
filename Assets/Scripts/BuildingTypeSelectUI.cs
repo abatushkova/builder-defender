@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class BuildingTypeSelectUI : MonoBehaviour
 
         arrowBtn.GetComponent<RectTransform>().anchoredPosition = new Vector2(offsetAmount * index, 0);
         arrowBtn.Find("image").GetComponent<Image>().sprite = arrowSprite;
-        arrowBtn.Find("image").GetComponent<RectTransform>().sizeDelta = new Vector2(0, -40);
+        arrowBtn.Find("image").GetComponent<RectTransform>().sizeDelta = new Vector2(0, -50);
 
         arrowBtn.GetComponent<Button>().onClick.AddListener(() =>
         {
@@ -53,7 +54,12 @@ public class BuildingTypeSelectUI : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void Start() {
+        BuildingManager.Instance.OnActiveBuildingTypeChanged += BuildingManager_OnActiveBuildingTypeChanged;
+        UpdateActiveBuildingTypeButton();
+    }
+
+    private void BuildingManager_OnActiveBuildingTypeChanged(object sender, BuildingManager.OnActiveBuildingTypeChangedEventArgs e)
     {
         UpdateActiveBuildingTypeButton();
     }
