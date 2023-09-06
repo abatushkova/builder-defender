@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class BuildingTypeSelectUI : MonoBehaviour
 {
     [SerializeField] private Sprite arrowSprite;
+
     private Transform arrowBtn;
     private Dictionary<BuildingTypeSO, Transform> btnTransformDictionary;
 
