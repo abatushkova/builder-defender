@@ -15,6 +15,8 @@ public class BuildingManager : MonoBehaviour
         public BuildingTypeSO activeBuildingType;
     }
 
+    [SerializeField] private Building hqBuilding;
+
     private Camera mainCamera;
     private BuildingTypeListSO buildingTypeList;
     private BuildingTypeSO activeBuildingType;
@@ -55,6 +57,12 @@ public class BuildingManager : MonoBehaviour
                     TooltipUI.Instance.Show(errorMessage, new TooltipUI.TooltipTimer { timer = 2f });
                 }
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Vector3 enemySpawnPosition = UtilsClass.GetMouseWorldPosition() + UtilsClass.GetRandomDir() * 5f;
+            Enemy.Create(enemySpawnPosition);
         }
     }
 
@@ -98,7 +106,7 @@ public class BuildingManager : MonoBehaviour
             BuildingTypeHolder buildingTypeHolder = collider2D.GetComponent<BuildingTypeHolder>();
             if (buildingTypeHolder != null)
             {
-                // Its a building
+                // Is a building
                 errorMessage = "";
                 return true;
             }
@@ -119,5 +127,10 @@ public class BuildingManager : MonoBehaviour
     public BuildingTypeSO GetActiveBuildingType()
     {
         return activeBuildingType;
+    }
+
+    public Building GetHQBuilding()
+    {
+        return hqBuilding;
     }
 }
