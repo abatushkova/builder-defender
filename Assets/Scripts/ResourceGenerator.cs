@@ -14,10 +14,10 @@ public class ResourceGenerator : MonoBehaviour
             ResourceNode resourceNode = collider2D.GetComponent<ResourceNode>();
             if (resourceNode != null)
             {
-                // It's a resource node!
+                // Is a resource node
                 if (resourceNode.resourceType == resourceGeneratorData.resourceType)
                 {
-                    // Same type!
+                    // Same type
                     nearbyResourceAmount++;
                 }
             }

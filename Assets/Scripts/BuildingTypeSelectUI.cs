@@ -23,7 +23,7 @@ public class BuildingTypeSelectUI : MonoBehaviour
         int index = 0;
         float offsetAmount = 130f;
 
-        // add cursor button
+        // Add cursor button
         arrowBtn = Instantiate(btnTemplate, transform);
         arrowBtn.gameObject.SetActive(true);
 
@@ -38,7 +38,7 @@ public class BuildingTypeSelectUI : MonoBehaviour
 
         index++;
 
-        // add building type buttons
+        // Add building type buttons
         foreach (BuildingTypeSO buildingType in buildingTypeList.list)
         {
             if (ignoreBuildingTypeList.Contains(buildingType)) continue;
