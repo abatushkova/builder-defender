@@ -23,6 +23,7 @@ public class BuildingTypeSelectUI : MonoBehaviour
         int index = 0;
         float offsetAmount = 130f;
 
+        // add cursor button
         arrowBtn = Instantiate(btnTemplate, transform);
         arrowBtn.gameObject.SetActive(true);
 
@@ -37,6 +38,7 @@ public class BuildingTypeSelectUI : MonoBehaviour
 
         index++;
 
+        // add building type buttons
         foreach (BuildingTypeSO buildingType in buildingTypeList.list)
         {
             if (ignoreBuildingTypeList.Contains(buildingType)) continue;
@@ -50,6 +52,17 @@ public class BuildingTypeSelectUI : MonoBehaviour
             {
                 BuildingManager.Instance.SetActiveBuildingType(buildingType);
             });
+
+            MouseEnterExitEvents mouseEnterExitEvents = btnTransfrom.GetComponent<MouseEnterExitEvents>();
+            mouseEnterExitEvents.OnMouseEnter += (object sender, EventArgs e) =>
+            {
+                TooltipUI.Instance.Show(buildingType.nameString + "\n"
+                    + buildingType.GetConstructionResourceCostString());
+            };
+            mouseEnterExitEvents.OnMouseExit += (object sender, EventArgs e) =>
+            {
+                TooltipUI.Instance.Hide();
+            };
 
             btnTransformDictionary[buildingType] = btnTransfrom;
 
