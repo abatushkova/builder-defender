@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     private Rigidbody2D rigidbody2d;
     private Transform targetTransform;
+    private HealthSystem healthSystem;
     private float lookForTargetTimer;
     private float lookForTargetTimerMax = 0.2f;
 
@@ -22,8 +23,15 @@ public class Enemy : MonoBehaviour
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         targetTransform = BuildingManager.Instance.GetHQBuilding().transform;
+        healthSystem = GetComponent<HealthSystem>();
+        healthSystem.OnDied += HealthSystem_OnDied;
 
         lookForTargetTimer = Random.Range(0f, lookForTargetTimerMax);
+    }
+
+    private void HealthSystem_OnDied(object sender, System.EventArgs e)
+    {
+        Destroy(gameObject);
     }
 
     private void Update()
@@ -48,8 +56,9 @@ public class Enemy : MonoBehaviour
     {
         if (targetTransform != null)
         {
-            Vector3 moveDir = (targetTransform.position - transform.position).normalized;
             float moveSpeed = 6f;
+            Vector3 moveDir = (targetTransform.position - transform.position).normalized;
+
             rigidbody2d.velocity = moveDir * moveSpeed;
         }
         else
@@ -61,7 +70,7 @@ public class Enemy : MonoBehaviour
     private void HandleTargeting()
     {
         lookForTargetTimer -= Time.deltaTime;
-        if (lookForTargetTimer < 0f)
+        if (lookForTargetTimer <= 0f)
         {
             lookForTargetTimer += lookForTargetTimerMax;
             LookForTargets();
@@ -88,7 +97,7 @@ public class Enemy : MonoBehaviour
                     if (Vector3.Distance(transform.position, building.transform.position) <
                         Vector3.Distance(transform.position, targetTransform.position))
                     {
-                        // Found closer building as target
+                        // Found closer building as a target
                         targetTransform = building.transform;
                     }
                 }

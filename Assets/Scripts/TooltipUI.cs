@@ -32,7 +32,7 @@ public class TooltipUI : MonoBehaviour
         if (tooltipTimer != null)
         {
             tooltipTimer.timer -= Time.deltaTime;
-            if (tooltipTimer.timer <= 0)
+            if (tooltipTimer.timer <= 0f)
             {
                 Hide();
             }
