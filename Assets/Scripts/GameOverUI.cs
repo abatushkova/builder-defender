@@ -26,6 +26,7 @@ public class GameOverUI : MonoBehaviour
 
     public void Show()
     {
+        Time.timeScale = 0f; // pause game
         gameObject.SetActive(true);
 
         transform.Find("wavesSurvivedText").GetComponent<TextMeshProUGUI>()
@@ -34,6 +35,7 @@ public class GameOverUI : MonoBehaviour
 
     private void Hide()
     {
+        Time.timeScale = 1f; // unpause game
         gameObject.SetActive(false);
     }
 }
