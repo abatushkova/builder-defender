@@ -39,7 +39,8 @@ public class OptionsUI : MonoBehaviour
         });
         transform.Find("mainMenuBtn").GetComponent<Button>().onClick.AddListener(() =>
         {
-
+            Time.timeScale = 1f;
+            GameSceneManager.Load(GameSceneManager.Scene.MainMenuScene);
         });
     }
 
@@ -47,7 +48,6 @@ public class OptionsUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         UpdateText();
-        Debug.Log("optionsUI is running");
     }
 
     private void UpdateText()
@@ -60,13 +60,7 @@ public class OptionsUI : MonoBehaviour
     {
         gameObject.SetActive(!gameObject.activeSelf);
 
-        if (gameObject.activeSelf)
-        {
-            Time.timeScale = 0f;
-        }
-        else
-        {
-            Time.timeScale = 1f;
-        }
+        // pause | unpause game
+        Time.timeScale = gameObject.activeSelf ? 0f : 1f;
     }
 }
