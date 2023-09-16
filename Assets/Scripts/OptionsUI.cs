@@ -56,7 +56,7 @@ public class OptionsUI : MonoBehaviour
         gameObject.SetActive(false);
         UpdateText();
 
-        // set toggle to default (unchecked) on the start in case it is enabled
+        // set toggle to default on the start in case it is enabled
         // do not call Instance on Awake()
         transform.Find("edgeScrollingToggle").GetComponent<Toggle>().SetIsOnWithoutNotify(CameraHandler.Instance.GetEdgeScrolling());
     }

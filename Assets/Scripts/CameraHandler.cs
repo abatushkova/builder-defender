@@ -16,6 +16,8 @@ public class CameraHandler : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+
+        edgeScrolling = PlayerPrefs.GetInt("edgeScrolling", 1) == 1; // 1 - enabled by default
     }
 
     private void Start()
@@ -81,6 +83,7 @@ public class CameraHandler : MonoBehaviour
     public void SetEdgeScrolling(bool edgeScrolling)
     {
         this.edgeScrolling = edgeScrolling;
+        PlayerPrefs.SetInt("edgeScrolling", edgeScrolling ? 1 : 0);
     }
 
     public bool GetEdgeScrolling()
