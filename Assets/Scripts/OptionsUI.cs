@@ -27,6 +27,7 @@ public class OptionsUI : MonoBehaviour
             soundManager.DecreaseVolume();
             UpdateText();
         });
+
         transform.Find("musicIncreaseBtn").GetComponent<Button>().onClick.AddListener(() =>
         {
             musicManager.IncreaseVolume();
@@ -37,10 +38,16 @@ public class OptionsUI : MonoBehaviour
             musicManager.DecreaseVolume();
             UpdateText();
         });
+
         transform.Find("mainMenuBtn").GetComponent<Button>().onClick.AddListener(() =>
         {
             Time.timeScale = 1f;
             GameSceneManager.Load(GameSceneManager.Scene.MainMenuScene);
+        });
+
+        transform.Find("edgeScrollingToggle").GetComponent<Toggle>().onValueChanged.AddListener((bool set) =>
+        {
+            CameraHandler.Instance.SetEdgeScrolling(set);
         });
     }
 
@@ -48,6 +55,10 @@ public class OptionsUI : MonoBehaviour
     {
         gameObject.SetActive(false);
         UpdateText();
+
+        // set toggle to default (unchecked) on the start in case it is enabled
+        // do not call Instance on Awake()
+        transform.Find("edgeScrollingToggle").GetComponent<Toggle>().SetIsOnWithoutNotify(CameraHandler.Instance.GetEdgeScrolling());
     }
 
     private void UpdateText()
