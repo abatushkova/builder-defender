@@ -39,6 +39,7 @@ public class Enemy : MonoBehaviour
     {
         SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyHit);
         CinemachineShake.Instance.ShakeCamera(3f, 0.1f);
+        ChromaticAberrationEffect.Instance.SetWeight(0.5f);
     }
 
     private void HealthSystem_OnDied(object sender, System.EventArgs e)
@@ -46,6 +47,7 @@ public class Enemy : MonoBehaviour
         Instantiate(Resources.Load<Transform>("pfEnemyDieParticles"), transform.position, Quaternion.identity);
         SoundManager.Instance.PlaySound(SoundManager.Sound.EnemyDie);
         CinemachineShake.Instance.ShakeCamera(5f, 0.15f);
+        ChromaticAberrationEffect.Instance.SetWeight(0.5f);
         Destroy(gameObject);
     }
 
