@@ -24,7 +24,7 @@ MonoBehaviour:
   minConstructionRadius: 7
   constructionResourceCostArray:
   - resourceType: {fileID: 11400000, guid: fa3968f22a8fe4e5499391750f713965, type: 2}
-    amount: 100
+    amount: 50
   - resourceType: {fileID: 11400000, guid: 2a0d464d5ac2747c7915f9c49e33b4cd, type: 2}
     amount: 30
   healthAmountMax: 70
