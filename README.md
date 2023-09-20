@@ -5,7 +5,7 @@ Unity 2D Game, educational project for Udemy, Learn to make an Awesome Builder-D
 - Unity
 - C#
 
-## Game play
+## Gameplay
 The design is sort of a mix between a City Builder and a Tower Defense game.
 
 The player has the ability to place buildings and those buildings gather resources.
