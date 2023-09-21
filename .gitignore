@@ -75,4 +75,7 @@ crashlytics-build.properties
 *.DS_Store
 
 # Visual Studio Code
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/launch.json
+!.vscode/extensions.json
